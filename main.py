@@ -20,6 +20,26 @@ try:
     os.mkdir("C:\\Drawings") #versuch ein ordner für die Zeichnungen zu erstellen
 except OSError as error: 
     print(error)
+coldict = {
+    "1" : [],
+    "2" : [],
+    "3" : [],
+    "4" : [],
+    "5" : [],
+    "6" : [],
+    "7" : [],
+    "8" : [],
+    "9" : [],
+    "10" : [],
+    "11" : [],
+    "12" : [],
+    "13" : [],
+    "14" : [],
+    "15" : [],
+    "16" : [],
+    "17" : [],
+    "18" : []
+}
 
 
 ############################################
@@ -55,7 +75,7 @@ KEY_EMPTY = 32
 KEY_RETURN = 10
 KEY_DOT = 46
 KEY_COMMA = 44
-KEY_DEL = 127
+KEY_DEL = 8
 
 ############################################
 #Funktionen zum Zeichnen einzelner Buchstaben
@@ -537,6 +557,15 @@ def interpret(ctrlList):
         
     #elif(...):
 
+def deleteChar():
+    global ctrlList, Ypos
+    if(ctrlList != []):   
+        ctrlList.pop()
+        clear("black")        
+        setPos(-350, Ypos)
+        for letter in ctrlList:
+            draw_letter(ord(letter), False)    
+
 def StringList(List):
     #funktion um Array in Strings umzuwandeln
     string_catcher = "" #späterer Rückgabewert
@@ -544,7 +573,7 @@ def StringList(List):
         string_catcher += e
     return string_catcher  
 
-def draw_letter(key):
+def draw_letter(key, add = True):
     global ctrlList #initialisierung der Command-Liste (r/w zugriff)
     """
     Aufbau eines Schriftabgleiches:
@@ -564,14 +593,16 @@ def draw_letter(key):
         fd(1)
         pd()
         setH(360)
-        ctrlList.append("Q")
+        if(add):
+            ctrlList.append("Q")
     elif key == KEY_W:
         W()
         pu()
         fd(30)
         setH(360)
         pd()
-        ctrlList.append("W")
+        if(add):
+            ctrlList.append("W")
     elif key == KEY_E:
         E()
         pu()
@@ -581,7 +612,8 @@ def draw_letter(key):
         fd(5)
         setH(360)
         pd()
-        ctrlList.append("E")
+        if(add):
+            ctrlList.append("E")
     elif key == KEY_R:
         R()
         pu()
@@ -590,7 +622,8 @@ def draw_letter(key):
         setH(360)
         fd(0.75)
         pd()
-        ctrlList.append("R")
+        if(add):
+            ctrlList.append("R")
     elif key == KEY_T:
         T()
         pu()
@@ -600,7 +633,8 @@ def draw_letter(key):
         fd(5)
         setH(360)
         pd()
-        ctrlList.append("T")
+        if(add):
+            ctrlList.append("T")
     elif key == KEY_Z:
         Z()
         pu()
@@ -610,7 +644,8 @@ def draw_letter(key):
         forward(18.75)
         setH(360)
         pd()
-        ctrlList.append("Z")      
+        if(add):
+            ctrlList.append("Z")      
     elif key == KEY_U:      
         U()
         pu()
@@ -620,7 +655,8 @@ def draw_letter(key):
         fd(15)
         setH(360)
         pd()
-        ctrlList.append("U")
+        if(add):
+            ctrlList.append("U")
     elif key == KEY_I:
         I()
         pu()
@@ -630,7 +666,8 @@ def draw_letter(key):
         fd(5)
         setH(360)
         pd()
-        ctrlList.append("I")
+        if(add):
+            ctrlList.append("I")
     elif key == KEY_O:
         O()
         pu()
@@ -640,7 +677,8 @@ def draw_letter(key):
         fd(10)
         setH(360)
         pd()
-        ctrlList.append("O")
+        if(add):
+            ctrlList.append("O")
     elif key == KEY_P:
         P()
         pu()
@@ -649,7 +687,8 @@ def draw_letter(key):
         fd(16)
         setH(360)
         pd()
-        ctrlList.append("P")
+        if(add):
+            ctrlList.append("P")
     elif key == KEY_A:
         A()
         pu()
@@ -659,7 +698,8 @@ def draw_letter(key):
         fd(7.9)
         setH(360)
         pd()
-        ctrlList.append("A")
+        if(add):
+            ctrlList.append("A")
     elif key == KEY_S:
         S()
         pu()
@@ -668,7 +708,8 @@ def draw_letter(key):
         fd(20)
         setH(360)
         pd()
-        ctrlList.append("S")
+        if(add):
+            ctrlList.append("S")
     elif key == KEY_D:
         D()
         pu()
@@ -676,7 +717,8 @@ def draw_letter(key):
         forward(15)
         setH(360)
         pd()
-        ctrlList.append("D")
+        if(add):
+            ctrlList.append("D")
     elif key == KEY_F:
         F()
         pu()
@@ -685,7 +727,8 @@ def draw_letter(key):
         fd(10)
         setH(360)
         pd()
-        ctrlList.append("F")
+        if(add):
+            ctrlList.append("F")
     elif key == KEY_G:
         G()
         pu()
@@ -695,7 +738,8 @@ def draw_letter(key):
         fd(2)
         setH(360)
         pd()
-        ctrlList.append("G")
+        if(add):
+            ctrlList.append("G")
     elif key == KEY_H:
         H()
         pu()
@@ -705,7 +749,8 @@ def draw_letter(key):
         fd(20)
         setH(360)
         pd()
-        ctrlList.append("H")
+        if(add):
+            ctrlList.append("H")
     elif key == KEY_J:
         J()
         pu()
@@ -715,7 +760,8 @@ def draw_letter(key):
         fd(4.75)
         setH(360)
         pd()
-        ctrlList.append("J")
+        if(add):
+            ctrlList.append("J")
     elif key == KEY_K:
         K()
         pu()
@@ -725,7 +771,8 @@ def draw_letter(key):
         fd(1.4)
         setH(360)
         pd()
-        ctrlList.append("K")
+        if(add):
+            ctrlList.append("K")
     elif key == KEY_L:
         L()
         pu()
@@ -735,7 +782,8 @@ def draw_letter(key):
         fd(5)
         setH(360)
         pd()
-        ctrlList.append("L")
+        if(add):
+            ctrlList.append("L")
     elif key == KEY_Y:
         Y()
         pu()
@@ -745,7 +793,8 @@ def draw_letter(key):
         fd(19.2)
         setH(360)
         pd()
-        ctrlList.append("Y")
+        if(add):
+            ctrlList.append("Y")
     elif key == KEY_X:
         X()
         pu()
@@ -754,7 +803,8 @@ def draw_letter(key):
         fd(0.52)
         setH(360)
         pd()
-        ctrlList.append("X")
+        if(add):
+            ctrlList.append("X")
     elif key == KEY_C:
         C()
         pu()
@@ -763,7 +813,8 @@ def draw_letter(key):
         fd(10)
         setH(360)
         pd()
-        ctrlList.append("C")
+        if(add):
+            ctrlList.append("C")
     elif key == KEY_V:
         V()
         pu()
@@ -773,7 +824,8 @@ def draw_letter(key):
         fd(19.05)
         setH(360)
         pd()
-        ctrlList.append("V")
+        if(add):
+            ctrlList.append("V")
     elif key == KEY_B:
         B()
         pu()
@@ -791,7 +843,8 @@ def draw_letter(key):
         fd(20)
         setH(360)
         pd()
-        ctrlList.append("N")
+        if(add):
+            ctrlList.append("N")
     elif key == KEY_M:
         M()
         pu()
@@ -801,22 +854,27 @@ def draw_letter(key):
         fd(20)
         setH(360)
         pd()
-        ctrlList.append("M")
+        if(add):
+            ctrlList.append("M")
     elif key == KEY_EMPTY:
         leer()
-        ctrlList.append(" ")
+        if(add):
+            ctrlList.append(" ")
     elif key == KEY_RETURN:
         enter()
+        print("u")
     elif key == KEY_DOT:
         punkt()
-        ctrlList.append(".")
+        if(add):
+            ctrlList.append(".")
     elif key == KEY_COMMA:
         komma()
-        ctrlList.append(",")
+        if(add):
+            ctrlList.append(",")
     elif key == "blob":
         blob()
     elif key == KEY_DEL:
-        
+        deleteChar()
 
 #funktion zur aufteilung eines String in eine Liste
 def split(word):
