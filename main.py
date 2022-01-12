@@ -514,6 +514,7 @@ def posJmp():
     if(pos >= 350):
         Ypos -= 30
         setPos(-350, Ypos)
+        col += 1
     #Wechsel der Seite
     if(Ypos == -280):
         clear("black")
@@ -570,7 +571,7 @@ def deleteChar():
                 for letter in coldict[e]:
                     draw_letter(ord(letter), False)
                 if(int(e) != col):
-                    draw_letter(KEY_RETURN)  
+                    draw_letter(KEY_RETURN, False)
 
 def editCtrlList(letter):
     global col, ctrlList, coldict
@@ -875,7 +876,8 @@ def draw_letter(key, add = True):
             editCtrlList(" ")
     elif key == KEY_RETURN:
         enter()
-        col += 1
+        if(add):
+            col += 1
         print(col)
     elif key == KEY_DOT:
         punkt()
