@@ -27,8 +27,8 @@ bkup_list = [] #Multipurpose Backuplist
 setTitle("Turtle Console") #setzt den Titel des Fensters
 try:
     os.mkdir("C:\\TCWorkspace") #versuch ein ordner für die Zeichnungen zu erstellen
-except OSError as error: 
-    print(error)
+except: 
+    pass
 playTone([(700, 250), (800, 250), (900, 500)]) #Startton abspielen
 
 
@@ -910,7 +910,6 @@ def saveEditorfile(name):
 def deleteChar():
     global ctrlList, ctrlList_cmdNoEdit, KEY_RETURN, Ypos, editormode, suppress_input #Initialisierung wichtiger Variabeln
     
-    print(ctrlList)
     #Funktion um Buchstaben zu Löschen
     suppress_input = False
     if(editormode):
