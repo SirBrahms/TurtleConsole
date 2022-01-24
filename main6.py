@@ -1386,8 +1386,6 @@ def draw_letter(key, add = True):
             ctrlList.append(",")
     elif key == "blob":
         blob()
-        if(add):
-            ctrlList.append("blob")
     elif key == KEY_DEL:
         deleteChar()
     elif key == KEY_ESC:
